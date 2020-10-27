@@ -1,6 +1,10 @@
 public class Game {
     private Parser parser;
     private Room currentRoom;
+    private static final String NORTH = "north";
+    private static final String EAST = "east";
+    private static final String SOUTH = "south";
+    private static final String WEST = "west";
         
 
     public Game() {
@@ -10,28 +14,30 @@ public class Game {
 
 
     private void createRooms() {
-        Room outside, theatre, pub, lab, office;
-      
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
-        
-        outside.setExit("east", theatre);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
+        Room headQuarter, field, garden, store, shed, stables;
 
-        theatre.setExit("west", outside);
+        headQuarter = new Room("the Farm: your home, and your base of operations.");
+        store = new Room("the store: the best place to barter.");
+        field = new Room("the field: perfect for plow, sow and reap the benefits of your harvest.");
+        garden = new Room("the bee-hives: give them bees-wax and harvest their honey");
+        shed = new Room("the shed: store items, contraptions, seeds and much more.");
+        stables = new Room("the stables: houses your animals");
 
-        pub.setExit("east", outside);
+        headQuarter.setExit(NORTH, store);
+        headQuarter.setExit(SOUTH, field);
+        headQuarter.setExit(EAST, shed);
 
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
+        store.setExit(SOUTH, headQuarter);
 
-        office.setExit("west", lab);
+        field.setExit(NORTH, headQuarter);
+        field.setExit(EAST, garden);
+        field.setExit(WEST, stables);
 
-        currentRoom = outside;
+        garden.setExit(WEST, field);
+
+        stables.setExit(EAST, field);
+
+        shed.setExit(WEST, headQuarter);
     }
 
     public void play() {
