@@ -4,13 +4,11 @@ public enum CommandWord
     
     private String commandString;
     
-    CommandWord(String commandString)
-    {
+    CommandWord(String commandString) {
         this.commandString = commandString;
     }
     
-    public String toString()
-    {
+    public String toString() {
         return commandString;
     }
 }

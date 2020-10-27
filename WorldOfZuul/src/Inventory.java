@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory {
@@ -7,7 +8,7 @@ public class Inventory {
 
 
     public Inventory(){
-
+        items = new ArrayList<>();
     }
 
     public void addItem(Item item) {

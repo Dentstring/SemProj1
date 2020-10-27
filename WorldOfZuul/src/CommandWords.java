@@ -1,8 +1,7 @@
 import java.util.HashMap;
 
 
-public class CommandWords
-{
+public class CommandWords {
     private HashMap<String, CommandWord> validCommands;
 
     // I don't see the use, of calling this constructor more than once...
